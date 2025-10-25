@@ -1,14 +1,12 @@
-# UK Customer Intelligence Research Prompt
-## For Wiz.io Customer-Specific Strategy Development
+# UK Customer Intelligence Research
+## Wiz.io - Customer-Specific Strategy Development
 
-## Purpose
-This prompt conducts comprehensive research on UK-headquartered businesses to gather the specific customer intelligence needed to populate the Customer-Specific Strategy with Wiz Alignment Map. It focuses on publicly available information about the company's business context, technology environment, security posture, and strategic priorities.
+> **Purpose**: Conduct comprehensive research on UK-headquartered businesses to gather customer intelligence for populating the Customer-Specific Strategy with Wiz Alignment Map.
+>
+> **Focus**: Verified information with clear distinction between VERIFIED, ASSUMED, and NOT FOUND status.
 
 ---
 
-## Research Prompt Template
-
-```
 Conduct comprehensive customer intelligence research for [COMPANY NAME], a UK-headquartered business, to support development of a Wiz.io customer-specific strategy and alignment map.
 
 Company: [Company Name]
@@ -105,6 +103,10 @@ Research and document:
 
 ## SECTION 3: CLOUD & TECHNOLOGY ENVIRONMENT
 
+**CRITICAL REQUIREMENT FOR THIS SECTION**: Only include VERIFIED information with direct sources. Do NOT make assumptions about technology stack based on job postings alone, industry norms, or indirect evidence. If you cannot find a direct source confirming a technology is in use, mark it as NOT FOUND rather than assuming.
+
+Technology stack information is business-critical for solution positioning and must be accurate. Mark anything as ASSUMED only if you have strong indirect evidence (e.g., multiple job postings + conference talk + case study), and always explain the basis clearly.
+
 ### 3.1 Cloud Infrastructure & Architecture
 Research and document:
 - **Known cloud providers** (AWS, Azure, GCP usage mentioned in case studies, job postings, or news)
@@ -114,40 +116,79 @@ Research and document:
 - **Edge computing or distributed architecture** references
 
 **Research approach**: 
-- Review job postings for cloud platform requirements (AWS Solutions Architect, Azure DevOps Engineer, etc.)
-- Check for cloud provider case studies featuring the company
-- Look for conference talks or blog posts about their architecture
-- Review technology partnership announcements
+- **VERIFIED sources only**: Cloud provider case studies, official company tech blogs, conference presentations by company engineers, official partnership announcements
+- **Strong evidence for ASSUMED**: Multiple job postings (3+) requiring specific cloud platform PLUS other corroborating evidence
+- **Weak evidence (do NOT use)**: Single job posting, general industry patterns, competitor similarities
+- Review job postings for cloud platform requirements only as supporting evidence, not primary source
+- Check for cloud provider case studies featuring the company (AWS Customer Stories, Azure Case Studies, GCP Customer Success)
+- Look for conference talks or blog posts about their architecture where engineers explicitly discuss platforms
+- Review technology partnership announcements from cloud providers
 
-**Required sources**: Job postings, cloud provider case studies (AWS/Azure/GCP customer stories), company tech blog, conference presentations, developer documentation
+**Examples of VERIFIED technology information**:
+- "AWS mentioned in official case study published by AWS"
+- "Engineering blog post shows architecture diagram with Azure services"
+- "CTO discussed Kubernetes deployment at KubeCon presentation"
+
+**Examples that must be marked ASSUMED**:
+- "5 job postings require AWS experience" (ASSUMED - likely uses AWS based on job requirements)
+- "Typical for fintech companies" (ASSUMED - industry pattern, not verified for this company)
+- "LinkedIn shows cloud engineers" (ASSUMED - presence of cloud roles suggests cloud usage but doesn't confirm platform)
+
+**Required sources**: Cloud provider case studies (AWS/Azure/GCP customer stories), company tech blog, conference presentations (with links to slides/videos), official partnership announcements, company published architecture documentation
 
 ### 3.2 Development Practices & DevOps Maturity
 Research and document:
-- **Development methodologies** mentioned (Agile, DevOps, CI/CD references in job postings)
-- **Engineering team size** estimates (from LinkedIn employee counts, job postings)
-- **Technology stack clues** from job postings (languages, frameworks, tools)
-- **Open source involvement** (GitHub organization, open source projects, contributions)
-- **Engineering culture insights** (from Glassdoor, engineering blogs, conference talks)
-- **Release cadence or deployment frequency** mentioned anywhere
+- **Development methodologies** mentioned in official communications (Agile, DevOps references - VERIFIED sources only)
+- **Engineering team size** estimates (from LinkedIn employee counts filtered by Engineering/Development roles)
+- **Technology stack clues** - VERIFIED only from tech blogs, conference talks, open source projects
+- **Open source involvement** (GitHub organization, open source projects, contributions - VERIFIED)
+- **Engineering culture insights** (from official engineering blogs, conference presentations - NOT Glassdoor unless corroborated)
+- **Release cadence or deployment frequency** mentioned in official sources
 
-**Required sources**: Job postings, company tech blog, GitHub organization, Glassdoor reviews (engineering team feedback), conference presentations
+**VERIFIED Technology Stack Sources**:
+- Official company tech blog posts discussing tools and frameworks
+- Conference presentations where engineers demo or discuss their stack
+- Open source projects published by the company showing languages/frameworks
+- Official job descriptions (but only as supporting evidence, not sole source)
+
+**Mark as ASSUMED if**:
+- Only source is job postings
+- Inferred from industry norms or peer companies
+- Based on general statements without specific tool/platform mentions
+
+**Required sources**: Company tech blog (official), GitHub organization (if exists), conference presentations with video/slides, published case studies, developer documentation (official)
 
 ### 3.3 Current Technology Stack & Security Tools
 Research and document:
-- **Known security vendors or tools** (from job postings, case studies, partner announcements)
-- **SIEM or SOC platform mentions** (Splunk, Elastic, etc.)
-- **Identity and access management** (Okta, Azure AD, etc.)
-- **Cloud security tools** currently in use (if mentioned in job postings or talks)
-- **Compliance or GRC platforms** referenced (ServiceNow, Archer, etc.)
-- **Developer security tools** (SAST, DAST tools mentioned)
 
-**Research approach**: 
-- Scan job postings for required security tool experience
-- Look for technology partner case studies
-- Check for mentions in conference presentations or webinars
-- Review integration documentation if available
+**CRITICAL**: This section is essential for competitive positioning. Only include VERIFIED information about security tools and platforms actually in use. Do NOT assume based solely on job postings.
 
-**Required sources**: Job postings, technology partner case studies, conference presentations, webinar recordings, company documentation
+- **Known security vendors or tools** (VERIFIED from case studies, partnership announcements, conference talks)
+- **SIEM or SOC platform mentions** (Splunk, Elastic, etc. - must have direct source)
+- **Identity and access management** (Okta, Azure AD, etc. - must be explicitly mentioned)
+- **Cloud security tools** currently in use (must have confirmation beyond job postings)
+- **Compliance or GRC platforms** referenced in official sources
+- **Developer security tools** (SAST, DAST tools - must be explicitly mentioned in tech content)
+
+**VERIFIED Security Tool Sources ONLY**:
+- Technology partner case studies or press releases
+- Conference presentations where security tools are demonstrated or discussed
+- Official company security page listing integrations or certifications
+- Published security architecture documentation
+- Webinar recordings where tools are shown
+
+**When to mark as ASSUMED**:
+- Multiple job postings (3+) require experience with specific tool PLUS other evidence (e.g., conference mention)
+- State clearly: "ASSUMED - 4 job postings require Splunk experience and company appears in Splunk partner directory"
+
+**Do NOT include**:
+- Tools mentioned in only 1-2 job postings
+- Generic statements like "likely uses standard cloud security tools"
+- Assumptions based on company size or industry without specific evidence
+
+**If no verified security tools found**: Clearly state "NOT FOUND - No publicly available information about current security tooling. Will require discovery during sales conversations."
+
+**Required sources**: Technology partner case studies, official partnership announcements, conference presentations (with links), company security/compliance documentation, webinar recordings, integration documentation
 
 ---
 
@@ -334,15 +375,48 @@ Research and document:
 
 ## OUTPUT FORMAT REQUIREMENTS
 
+### CRITICAL: Verified Information Only
+- **Only include information that has a verifiable source**
+- **Never make assumptions or inferences without evidence**
+- **If information cannot be found, explicitly state "NOT FOUND" or "NOT PUBLICLY AVAILABLE"**
+- **Do not fill gaps with industry assumptions or typical patterns**
+- **Do not infer stakeholder priorities without direct evidence**
+- **When uncertain, mark as "UNVERIFIED" rather than stating as fact**
+
 For each research finding, use this format:
 
 **[Data Point or Insight Title]**
+- **Status**: [VERIFIED or ASSUMED]
 - **Finding**: [Specific information discovered]
-- **Source**: [Full URL]
+- **Source**: [Full URL if verified, or "Not publicly available - inferred from [basis]" if assumed]
 - **Date**: [Publication or access date]
-- **Reliability**: [Official company source / News article / Analyst report / Job posting / Social media]
+- **Reliability**: [Official company source / News article / Analyst report / Job posting / Social media / Inferred]
 - **Relevant Quote/Reference**: "[Direct quote or key excerpt if applicable]"
-- **Analysis**: [1-2 sentences on what this means for Wiz positioning]
+- **Analysis**: [1-2 sentences on what this means for Wiz positioning - clearly marked as interpretation]
+
+### VERIFIED vs ASSUMED Definitions:
+
+**VERIFIED Information**: 
+- Has a direct, public source that explicitly states the information
+- Can be cited with a specific URL, document, or public record
+- Examples: Company registered address from Companies House, cloud provider mentioned in case study, executive name from company website, certifications listed on company website
+
+**ASSUMED Information**:
+- Inferred or deduced from indirect evidence
+- Based on industry norms, job posting patterns, or logical conclusions
+- No direct public statement confirms this information
+- Must be clearly labeled as **ASSUMED** and explain the basis for the assumption
+- Examples: "ASSUMED - Based on 5 AWS job postings, likely primary cloud provider" or "ASSUMED - Typical for UK fintech companies of this size based on industry benchmarks"
+
+**Critical Rule**: When in doubt, mark as ASSUMED. It's better to be conservative and transparent about information certainty.
+
+If information cannot be found for any research area:
+
+**[Data Point Title]**
+- **Status**: NOT FOUND
+- **Finding**: NOT PUBLICLY AVAILABLE
+- **Search Attempted**: [Brief description of what was searched]
+- **Implication**: [What this gap means for the research - e.g., "Will need to gather during discovery calls"]
 
 ---
 
@@ -402,16 +476,20 @@ After completing all research sections, provide:
 
 ---
 
-## EXAMPLE RESEARCH OUTPUT SNIPPET
+## EXAMPLE RESEARCH OUTPUT SNIPPETS
 
+### Example 1: Fully Verified Information
 **Company Headquarters Location**
+- **Status**: VERIFIED
 - **Finding**: Monzo Bank headquarters located in London, UK (Broadwalk House, 5 Appold St, London EC2A 2AG)
-- **Source**: https://monzo.com/contact-us and Companies House record
+- **Source**: https://monzo.com/contact-us and https://find-and-update.company-information.service.gov.uk/company/09446231
 - **Date**: Accessed October 2025
-- **Reliability**: Official company source
+- **Reliability**: Official company source + Companies House record
 - **Analysis**: London location indicates access to UK fintech talent pool and proximity to FCA regulation. Likely influenced by UK-specific cloud data residency requirements.
 
+### Example 2: Verified Technical Information with Direct Evidence
 **Cloud Infrastructure Evidence**
+- **Status**: VERIFIED
 - **Finding**: Monzo runs primarily on AWS, with services spanning multiple availability zones. Engineering blog confirms use of EKS (Kubernetes), Lambda, RDS, and S3.
 - **Source**: https://monzo.com/blog/2024/06/15/cloud-architecture-evolution
 - **Date**: June 2024
@@ -419,12 +497,50 @@ After completing all research sections, provide:
 - **Relevant Quote**: "Our entire platform runs on AWS, leveraging managed services wherever possible to maintain our small infrastructure team's efficiency"
 - **Analysis**: Strong AWS footprint makes Wiz Cloud a natural fit. Kubernetes usage indicates need for container security. Small infrastructure team suggests appetite for agentless, low-overhead solutions.
 
+### Example 3: Partially Verified, Partially Assumed
 **Current Security Team Size**
-- **Finding**: LinkedIn shows 12 employees with "Security" in job title at Monzo, including CISO. 3 current job openings for Security Engineers.
-- **Source**: LinkedIn company page employee search + Monzo careers page
+- **Status**: VERIFIED (team size) + ASSUMED (growth trajectory)
+- **Finding**: LinkedIn shows 12 employees with "Security" in job title at Monzo, including CISO. Current verified count: 12. ASSUMED: Growing security function based on 3 active job openings for Security Engineers.
+- **Source**: LinkedIn company page employee search (verified count) + https://monzo.com/careers (job openings)
 - **Date**: October 2025
 - **Reliability**: Medium-high (LinkedIn data + official job postings)
-- **Analysis**: Security team of ~12-15 people for a company of 2,500 employees suggests resource constraints. Active hiring indicates growing security function and potential urgency for force multiplication tools like Wiz.
+- **Analysis**: Security team of ~12 people for a company of 2,500 employees suggests resource constraints (verified). Active hiring patterns suggest potential urgency for force multiplication tools like Wiz (assumed based on job openings).
+
+### Example 4: Assumed Information with Clear Basis
+**Monitoring Tool Usage**
+- **Status**: ASSUMED
+- **Finding**: Likely uses Datadog for monitoring based on: (1) 4 current job postings requiring Datadog experience, (2) Datadog case study featuring Monzo from 2023, (3) Engineering team member LinkedIn profile listing Datadog skills. However, current active usage cannot be definitively confirmed.
+- **Source**: https://monzo.com/careers (job postings) + https://datadog.com/case-studies/monzo-2023 + LinkedIn profiles
+- **Date**: October 2025
+- **Reliability**: Inferred from multiple indirect sources
+- **Analysis**: Strong indirect evidence suggests Datadog usage, but this should be validated in discovery calls before positioning integration or competitive displacement strategies. If accurate, represents potential integration point for Wiz.
+
+### Example 5: Information Not Found
+**Current Cloud Security Platform**
+- **Status**: NOT FOUND
+- **Finding**: NOT PUBLICLY AVAILABLE - No public information available about current CSPM, CNAPP, or cloud security platform in use.
+- **Search Attempted**: Searched company tech blog, press releases, job postings (checked for Prisma Cloud, Orca, Wiz, Lacework, etc.), partner case studies, conference presentations. No explicit mentions found.
+- **Implication**: Critical gap for competitive positioning. Must gather during discovery calls with questions like: "What cloud security tools are you currently using? What's working well and what challenges are you facing?" This is a potential greenfield opportunity or displacement situation that requires validation.
+
+### Example 6: Verified Personal Information with Gaps
+**CISO Security Philosophy**
+- **Status**: VERIFIED (background) + NOT FOUND (current priorities)
+- **Finding**: CISO is Jane Smith (LinkedIn: linkedin.com/in/janesmith). Background includes 10 years in fintech security, previously Head of Security at Revolut (2018-2023) per LinkedIn profile.
+- **Source**: https://www.linkedin.com/in/janesmith and https://monzo.com/about/leadership
+- **Date**: October 2025
+- **Reliability**: Official LinkedIn + company leadership page
+- **Relevant Quote**: From LinkedIn: "Passionate about building security into product development from day one"
+- **Analysis**: Quote suggests DevSecOps mindset and shift-left approach, aligning well with Wiz Code positioning. 
+- **NOTE**: Specific security priorities for Monzo NOT FOUND publicly - will require discovery conversation.
+
+### Example 6: Correcting Assumptions - Single Cloud vs Multi-Cloud
+**Multi-Cloud Strategy**
+- **Status**: VERIFIED (AWS) + NOT FOUND (Azure/GCP)
+- **Finding**: AWS confirmed as primary cloud provider [see Cloud Infrastructure Evidence above]. No evidence found for Azure or GCP usage.
+- **Search Attempted**: Job postings, tech blog, conference talks, case studies
+- **Sources Checked**: Company blog, LinkedIn job posts, GitHub, cloud provider case study databases
+- **Analysis**: Single-cloud (AWS) based on available evidence. Do NOT assume multi-cloud without evidence. Single-cloud AWS environment simplifies Wiz deployment and reduces complexity in proof-of-value. Do not position multi-cloud benefits without confirmation during discovery.
+- **Important**: Many assume fintech companies use multi-cloud, but this must be VERIFIED not ASSUMED. Any multi-cloud usage NOT VERIFIED and should be confirmed in technical discovery calls.
 
 ---
 
@@ -445,56 +561,41 @@ Before finalizing research, ensure:
 
 ---
 
-## NOTES FOR CLAUDE
+## FINAL OUTPUT: WIZ ALIGNMENT MAP INPUT SUMMARY
 
-When executing this research prompt:
-1. **Search comprehensively**: Use web_search for company news, analyst reports, and general information. Use web_fetch to retrieve full content from key sources like company websites, annual reports, and detailed articles.
+After completing all research sections, provide a summary table formatted for direct input into the **Customer-Specific Strategy with Wiz Alignment Map Generator**:
 
-2. **Prioritize UK sources**: Focus on UK-specific news outlets, Companies House records, ICO registrations, and UK industry publications.
+```
+### Summary for Wiz Customer Alignment Map
 
-3. **Track all sources**: Every finding must have a source URL and date. If you can't find a source, note that as "Information not publicly available" rather than speculating.
+**Customer Context:**
+- **Company**: [Company name and brief description based on research]
+- **Industry/Vertical**: [Industry vertical and relevant sub-sector - VERIFIED from sources]
+- **Company Size**: [Employee count from LinkedIn/Companies House, revenue from financial filings if available, growth stage assessment]
+- **Cloud Maturity**: [Cloud adoption level based on research - VERIFIED where possible, otherwise mark as ASSUMED or NOT FOUND]
+  - Examples: "Cloud-native on AWS (VERIFIED - tech blog)", "Hybrid cloud (ASSUMED - based on job postings)", "Cloud maturity NOT FOUND"
+- **Primary Cloud Providers**: [VERIFIED cloud providers with sources, or mark as ASSUMED/NOT FOUND]
+  - Examples: "AWS (VERIFIED - case study)", "AWS primary, Azure secondary (ASSUMED - job postings)", "NOT FOUND - no public cloud provider information"
+- **Current Security Tools**: [List VERIFIED tools only, or note as ASSUMED/NOT FOUND]
+  - Examples: "Datadog (ASSUMED - 4 job postings)", "SIEM platform NOT FOUND", "ISO 27001 certified (VERIFIED - company website)"
+- **Key Business Drivers**: [Primary business initiatives from annual reports, press releases, exec statements]
+  - List 3-5 top priorities identified from research
+- **Known Challenges**: [Any disclosed security or operational challenges from research]
+  - Include source for each challenge mentioned
+- **Customer Type**: [Current relationship status if known, otherwise mark as "Prospect - no known relationship"]
 
-4. **Be objective**: Report what you find, not what you assume. If information is limited, note the gaps.
+**Research Confidence Assessment:**
+- High confidence areas: [List sections with strong VERIFIED information]
+- Medium confidence areas: [List sections with mostly ASSUMED information]
+- Information gaps requiring discovery: [List critical NOT FOUND items that need validation]
 
-5. **Balance breadth and depth**: Cover all sections but go deeper on areas where rich information is available.
+**Recommended Discovery Questions:**
+[Based on NOT FOUND and ASSUMED items, suggest 5-10 questions to validate during sales conversations]
 
-6. **Think like a sales strategist**: Connect findings back to how they inform Wiz positioning and sales approach.
-
-7. **Validate UK headquarters**: Confirm the company is actually UK-headquartered via Companies House before proceeding with full research.
-
-8. **Time management**: This is comprehensive research. Aim for 15-25 web tool calls to gather sufficient information across all sections, using web_fetch for detailed sources and web_search for discovery.
-
----
-
-## VERSION HISTORY
-- v1.0 (October 2025): Initial UK-focused customer intelligence research prompt for Wiz customer-specific strategy development
+**Next Steps:**
+Use this summary as input for the Customer-Specific Strategy with Wiz Alignment Map Generator to create a tailored strategy document.
 ```
 
 ---
 
-## How to Use This Research Prompt
-
-1. **Identify the target UK company** you want to research
-2. **Gather any initial context** you already know about them
-3. **Input the company name and context** into the research prompt template above
-4. **Execute the research** using Claude with web search capabilities
-5. **Review the comprehensive research output** with all sources and references
-6. **Use the research findings** to populate the Customer-Specific Strategy with Wiz Alignment Map generator
-
-The research output will provide all the specific, sourced customer intelligence needed to create a highly tailored and credible Wiz strategy document.
-
----
-
-## Example Usage
-
-```
-Conduct comprehensive customer intelligence research for Monzo Bank, a UK-headquartered business, to support development of a Wiz.io customer-specific strategy and alignment map.
-
-Company: Monzo Bank
-Industry/Sector: Financial Services - Digital Banking / Fintech
-Initial Context: Digital-only challenger bank, known for innovative mobile banking, believed to be cloud-native on AWS
-
-[Full research prompt from above]
-```
-
-This would produce a comprehensive, sourced research document covering all aspects of Monzo's business, technology environment, security posture, and strategic priorities - all with specific URLs and references for further investigation.
+**End of Research Prompt**
