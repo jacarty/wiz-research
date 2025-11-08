@@ -1,0 +1,60 @@
+graph LR
+    %% Manual input
+    A[1. Base Data]
+
+    %% Parallel processes
+    B[2. Industry Intelligence Report] 
+    C[3. Prospect Business Report]
+    D[4. Prospect Technology Report]
+    
+    %% Synthesis
+    E[5. Synthesise]
+    
+    %% Slackbot input
+    F[6. Merlin]
+    
+    %% NotebookLM divider
+    G[NotebookLM Processing]
+    
+    %% Final outputs
+    H[7. Value Pyramid]
+    I[8. 3Y]
+    J[9. Champ Plan]
+    K[10. MEDDPICC Gaps]
+    L[11. PG Prep]
+    M[12. Meeting Prep]
+    N[13. Exec Research/Prep]
+    
+    %% Flow connections
+    B --> E
+    C --> E
+    D --> E
+    E --> F
+    
+    %% Also show that 0, 1, 2, 3, 5 feed into NotebookLM
+    A -.-> G
+    B -.-> G
+    C -.-> G
+    D -.-> G
+    F -.-> G
+    
+    G --> H
+    G --> I
+    G --> J
+    G --> K
+    G --> L
+    G --> M
+    G --> N
+    
+    %% Styling
+    classDef manual fill:#9333ea,stroke:#333,stroke-width:2px,color:#fff
+    classDef gemini fill:#4285f4,stroke:#333,stroke-width:2px,color:#fff
+    classDef slackbot fill:#e01e5a,stroke:#333,stroke-width:2px,color:#fff
+    classDef notebook fill:#f9ab00,stroke:#333,stroke-width:2px,color:#000
+    classDef divider fill:#34a853,stroke:#333,stroke-width:3px,color:#fff
+    
+    class A manual
+    class B,C,D,E gemini
+    class F slackbot
+    class H,I,J,K,L,M,N notebook
+    class G divider

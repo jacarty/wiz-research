@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Flow Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #2d3748;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 30px;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background-color: #f7fafc;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .legend-box {
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .gemini { background-color: #4285f4; color: #fff; }
+        .slackbot { background-color: #e01e5a; color: #fff; }
+        .notebooklm { background-color: #f9ab00; color: #000; }
+        .processing { background-color: #34a853; color: #fff; }
+        .manual { background-color: #9333ea; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Process Flow Diagram</h1>
+        <div class="mermaid">
+graph LR
+    %% Manual input
+    A[1. Base Data]
+
+    %% Parallel processes
+    B[2. Industry Intelligence Report] 
+    C[3. Prospect Business Report]
+    D[4. Prospect Technology Report]
+    
+    %% Synthesis
+    E[5. Synthesise]
+    
+    %% Slackbot input
+    F[6. Merlin]
+    
+    %% NotebookLM divider
+    G[NotebookLM Processing]
+    
+    %% Final outputs
+    H[7. Value Pyramid]
+    I[8. 3Y]
+    J[9. Champ Plan]
+    K[10. MEDDPICC Gaps]
+    L[11. PG Prep]
+    M[12. Meeting Prep]
+    N[13. Exec Research/Prep]
+    
+    %% Flow connections
+    B --> E
+    C --> E
+    D --> E
+    E --> F
+    
+    %% Also show that 1, 2, 3, 4, 6 feed into NotebookLM
+    A -.-> G
+    B -.-> G
+    C -.-> G
+    D -.-> G
+    F -.-> G
+    
+    G --> H
+    G --> I
+    G --> J
+    G --> K
+    G --> L
+    G --> M
+    G --> N
+    
+    %% Styling
+    classDef manual fill:#9333ea,stroke:#333,stroke-width:2px,color:#fff
+    classDef gemini fill:#4285f4,stroke:#333,stroke-width:2px,color:#fff
+    classDef slackbot fill:#e01e5a,stroke:#333,stroke-width:2px,color:#fff
+    classDef notebook fill:#f9ab00,stroke:#333,stroke-width:2px,color:#000
+    classDef divider fill:#34a853,stroke:#333,stroke-width:3px,color:#fff
+    
+    class A manual
+    class B,C,D,E gemini
+    class F slackbot
+    class H,I,J,K,L,M,N notebook
+    class G divider
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-box manual">Manual</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box gemini">Gemini</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box slackbot">Merlin</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box notebooklm">NotebookLM</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box processing">Processing Hub</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: { 
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

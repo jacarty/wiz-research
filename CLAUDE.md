@@ -4,61 +4,99 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Purpose
 
-This repository contains prompt templates for generating Wiz.io sales and marketing research materials. The prompts are designed to create strategic alignment documents that map business objectives to Wiz's cloud security platform capabilities (Wiz Code, Wiz Cloud, and Wiz Defend).
+This repository contains a structured workflow of AI prompt templates for generating Wiz.io sales and marketing research materials. The prompts create strategic intelligence documents that map prospect business objectives to Wiz's cloud security platform capabilities (Wiz Code, Wiz Cloud, and Wiz Defend).
 
-## Core Prompt Types
+## Workflow Architecture
 
-### 1. Customer Intelligence Research (`customer-general.md`)
-- **Purpose**: Conducts comprehensive research on UK-headquartered businesses using publicly available information
-- **Output**: Detailed customer intelligence report with sourced findings
-- **Use Case**: Pre-sales research to populate customer-specific strategy documents
-- **Key Sections**: Company profile, strategic initiatives, cloud environment, security posture, stakeholder identification, pain points
-- **Research Requirements**: Minimum of 25-30 data points with full source URLs and dates
+The repository implements a **13-step research-to-output pipeline** that feeds into NotebookLM for final deliverable generation. The workflow is visualized in [0_flow.mermaid](0_flow.mermaid) and follows this sequence:
 
-### 2. Customer-Specific Strategy Map (`customer-wiz-aligned.md`)
-- **Purpose**: Maps a specific customer's business objectives to Wiz product capabilities
-- **Output**: Tailored strategic alignment document for a single customer
-- **Use Case**: Opportunity analysis, sales strategy development, executive business cases
-- **Key Sections**: Customer profile, business goals, Wiz alignment assessment, implementation roadmap, ROI analysis
-- **Personalization**: Requires specific customer context (company size, cloud maturity, existing tools, known challenges)
+### Phase 1: Data Gathering (Manual)
+**Step 1: Base Data Collection** ([1_guide_base_data.md](1_guide_base_data.md))
+- Gather prospect URLs (website, LinkedIn, X, social media)
+- Collect data from Cognism, Marketing systems, and SFDC
+- Manual input phase - no prompt execution
 
-### 3. Vertical/Segment Strategy Map (`vertical-general.md`, `vertical-wiz-aligned.md`)
-- **Purpose**: Creates industry-wide strategy maps showing typical business objectives
-- **Output**: Comprehensive strategic planning document for an entire vertical or market segment
-- **Use Case**: Go-to-market planning, market analysis, sales enablement
-- **Key Sections**: Market overview, typical business goals, business function alignment, compliance requirements
-- **Detail Levels**:
-  - Executive Summary (default): 10-15 pages, concise, scannable
-  - Full Detailed Version: 30-50 pages, comprehensive
-- **Default Format**: PowerPoint presentation (can be customized to Markdown, Excel, Word, etc.)
+### Phase 2: Intelligence Reports (Gemini)
+These three reports run in parallel using Gemini with web search:
 
-### 4. Executive Meeting Preparation (`persona-exec-meeting-prep.md`)
-- **Purpose**: Creates comprehensive briefing documents for meeting senior executives at UK companies
-- **Output**: Markdown briefing document with executive profile, company context, and conversation starters
-- **Use Case**: Pre-meeting preparation, stakeholder research, relationship building
-- **Key Sections**: Company overview & recent news, executive profile, industry insights, role-specific concerns, KPIs, jargon, conversation starters
-- **Integration**: Output designed to be uploaded to NotebookLM for audio briefing generation
-- **Personalization**: Requires executive name, title, company name, and industry/vertical
+**Step 2: Industry Intelligence** ([2_guide_industry.md](2_guide_industry.md), [2_prompt_industry.md](2_prompt_industry.md))
+- Generates industry overview with market dynamics, trends, compliance requirements
+- Deep-dive on cloud/SaaS/AI technology innovation in the vertical
+- Output: 8-12 page executive-ready industry strategy map
 
-## Document Structure Patterns
+**Step 3: Prospect Business Report** ([3_guide_prospect_business.md](3_guide_prospect_business.md), [3_prompt_prospect_business.md](3_prompt_prospect_business.md))
+- Business intelligence on the specific prospect company
+- Strategic initiatives, revenue drivers, organizational structure
+- Focus on non-technical business context
 
-All strategy maps follow a consistent hierarchical structure:
+**Step 4: Prospect Technology Report** ([4_guide_prospect_tech.md](4_guide_prospect_tech.md), [4_prompt_prospect_tech.md](4_prompt_prospect_tech.md))
+- Technical intelligence: cloud platforms, security tools, tech stack
+- Infrastructure analysis, development practices, compliance posture
+- Technology-specific discovery
 
-```
-Business Goal → Strategies → Business Functions → Initiatives → Metrics/KPIs
-```
+### Phase 3: Synthesis (Gemini)
+**Step 5: GTM Intelligence Brief** ([5a_guide_synthesis.md](5a_guide_synthesis.md), [5a_prompt_synthesis.md](5a_prompt_synthesis.md))
+- Synthesizes Steps 2, 3, and 4 into a consolidated brief
+- Output must be under 10,000 characters for Merlin compatibility
+- Combines industry + business + tech intelligence
 
-### Typical Components:
-- **Business Goals**: 4-6 high-level objectives
-- **Strategies**: 3-4 approaches per goal
-- **Business Functions**: Technology, Operations, Marketing, HR, Finance, Legal, Risk & Compliance
-- **Initiatives**: 5-8 specific tactical actions per function
-- **Metrics & KPIs**: 5-8 quantifiable indicators with target values
-- **Challenges/Opportunities**: 4-5 items each
-- **Compliance Requirements**: Relevant regulations and frameworks
-- **Sources & References**: 8-12 sources (Executive), 15-20 sources (Full Detailed)
+**Step 5b: Merlin Prep (Optional)** ([5b_prompt_nlm_merlin_prep.md](5b_prompt_nlm_merlin_prep.md))
+- Alternative synthesis prompt for NotebookLM input preparation
 
-## Wiz Product Alignment
+### Phase 4: Use-Case Alignment (Slackbot)
+**Step 6: Merlin Analysis** ([6a_guide_merlin.md](6a_guide_merlin.md), [6a_prompt_merlin.md](6a_prompt_merlin.md), [6b_prompt_merlin.md](6b_prompt_merlin.md))
+- Run in Slack using Merlin bot
+- Analyzes GTM Intelligence Brief and generates ranked Wiz use-case recommendations
+- Outputs top 5 priority use-cases aligned to prospect's business priorities
+- Includes competitive displacement analysis
+
+### Phase 5: NotebookLM Outputs (Steps 7-13)
+Upload Steps 1-6 outputs to NotebookLM, then generate these deliverables:
+
+**Step 7: Strategic Value Pyramid** ([7_guide_vp.md](7_guide_vp.md), [7_prompt_vp.md](7_prompt_vp.md))
+- Company mission → Strategy → Initiatives → Risks → Technical context
+- Executive-ready strategic summary
+
+**Step 8: 3-Year Vision** ([8_guide_3y.md](8_guide_3y.md), [8_prompt_3Y.md](8_prompt_3Y.md))
+- Long-term strategic planning document
+
+**Step 9: Champion Plan** ([9_guide_champ_plan.md](9_guide_champ_plan.md), [9_prompt_champ_plan.md](9_prompt_champ_plan.md))
+- Internal champion enablement strategy
+
+**Step 10: MEDDPICC Gaps** ([10_guide_meddpicc_gaps.md](10_guide_meddpicc_gaps.md), [10_prompt_meddpicc_gaps.md](10_prompt_meddpicc_gaps.md))
+- Discovery call preparation with gap analysis
+- What we know vs. what's missing across all 8 MEDDPICC elements
+- Role-tailored question funnels and red flags
+
+**Step 11: Proof of Concept Prep** ([11_guide_pg.md](11_guide_pg.md), [11_prompt_pg.md](11_prompt_pg.md))
+- POC planning and success criteria
+
+**Step 12: Meeting Preparation** ([12_guide_meeting_prep.md](12_guide_meeting_prep.md), [12_prompt_meeting_prep.md](12_prompt_meeting_prep.md))
+- General meeting prep briefings
+
+**Step 13: Executive Research/Prep** ([13_guide_exec_prep.md](13_guide_exec_prep.md), [13_prompt_exec_prep.md](13_prompt_exec_prep.md))
+- Executive-specific research and meeting preparation
+- Designed for upload to NotebookLM for audio briefing generation
+
+## File Naming Convention
+
+All files follow a consistent pattern:
+- `[NUMBER]_guide_[NAME].md` - User guide explaining how to use the prompt
+- `[NUMBER]_prompt_[NAME].md` - Actual prompt template to copy/paste into AI assistant
+- Numbers indicate workflow sequence (1-13)
+- `0_flow.mermaid` - Visual workflow diagram
+
+## AI Tool Routing
+
+Different steps use different AI platforms:
+
+| Step | Tool | Reason |
+|------|------|--------|
+| 2-5 | **Gemini** | Web search capabilities for research |
+| 6 | **Merlin (Slackbot)** | Team collaboration, character limit optimization |
+| 7-13 | **NotebookLM** | Synthesis across multiple documents, audio generation |
+
+## Wiz Product Framework
 
 When mapping to Wiz products, use this framework:
 
@@ -85,119 +123,92 @@ When mapping to Wiz products, use this framework:
 
 ## Research Quality Standards
 
-### Source Credibility Hierarchy:
+### UK-Specific Research Sources (Primary Focus)
+- **Companies House**: https://www.gov.uk/government/organisations/companies-house (registration, financials, directors)
+- **ICO Register**: https://ico.org.uk/ (data protection, breach notifications)
+- **UK Tech News**: ComputerWeekly, The Register UK, BusinessCloud, TechCrunch UK
+- **UK Cloud Guidance**: NCSC Cloud Security Guidance, UK government cloud strategy
+
+### Source Credibility Hierarchy
 1. **Highest**: Company official sources (website, annual reports, press releases)
 2. **High**: Government records (Companies House, ICO), financial filings
 3. **Medium-high**: Major news outlets, analyst reports, cloud provider case studies
 4. **Medium**: Trade publications, job postings, LinkedIn profiles
 5. **Lower**: Glassdoor reviews, social media (use only to corroborate)
 
-### UK-Specific Research Sources:
-- **Companies House**: https://www.gov.uk/government/organisations/companies-house (registration, financials, directors)
-- **ICO Register**: https://ico.org.uk/ (data protection, breach notifications)
-- **UK Tech News**: ComputerWeekly, The Register UK, BusinessCloud, TechCrunch UK
-- **UK Cloud Guidance**: NCSC Cloud Security Guidance, UK government cloud strategy
-
-## Common Customization Patterns
-
-### Detail Level Selection:
-```
-Default (Executive Summary): Concise, scannable, 10-15 pages
-Full Detailed Version: Comprehensive, 30-50 pages (specify: "create the full detailed version")
-```
-
-### Output Format Options:
-```
-PowerPoint (default - no need to specify)
-Markdown ("Output as Markdown instead of PowerPoint")
-Excel ("Create as an Excel workbook")
-Word ("Output as a Word document")
-Visual diagram ("Create as a visual diagram")
-```
-
-### Geographic/Segment Targeting:
-```
-Be specific: "UK Fintech, Series B-C companies" vs. "Fintech"
-Include context: "Focus on B2B SaaS companies"
-Specify stage: "Early-stage startups vs. established players"
-```
-
 ## Common Workflows
 
-### Complete Customer Engagement Workflow:
-1. **Pre-Meeting Research**: Use `persona-exec-meeting-prep.md` to research the executive and company
-2. **Company Intelligence**: Use `customer-general.md` for detailed organizational research
-3. **Strategic Alignment**: Use `customer-wiz-aligned.md` to create tailored value proposition
-4. **Presentation Preparation**: Request format conversion (PowerPoint, Word) and visual diagrams
+### Complete Deal Cycle (All 13 Steps)
+1. Gather base data manually (Step 1)
+2. Run parallel research in Gemini (Steps 2, 3, 4)
+3. Synthesize in Gemini (Step 5)
+4. Generate use-case alignment in Merlin (Step 6)
+5. Upload all outputs to NotebookLM
+6. Generate specific deliverables as needed (Steps 7-13)
 
-### Vertical Go-to-Market Workflow:
-1. **Market Analysis**: Use `vertical-general.md` to understand industry landscape
-2. **Wiz Positioning**: Use `vertical-wiz-aligned.md` to create product alignment materials
-3. **Sales Enablement**: Request executive summary version for quick reference
-4. **Deep Dive**: Request full detailed version for comprehensive analysis
+### Quick Discovery Prep
+1. Ensure Steps 1-6 are completed
+2. Upload to NotebookLM
+3. Run Step 10 (MEDDPICC Gaps) for meeting preparation
 
-### Quick Executive Briefing Workflow:
-1. **Generate Briefing**: Use `persona-exec-meeting-prep.md` with specific executive details
-2. **Save Output**: Export as markdown or text file
-3. **Upload to NotebookLM**: Add as source along with company reports
-4. **Generate Audio**: Use NotebookLM's Audio Overview for listening before meeting
+### Executive Meeting Prep
+1. Ensure Steps 1-6 are completed
+2. Upload to NotebookLM
+3. Run Step 7 (Value Pyramid) for strategic context
+4. Run Step 13 (Executive Prep) for specific executive research
+5. Use NotebookLM's Audio Overview feature for listening before meeting
 
-## Common Follow-Up Requests
+### POC Planning
+1. Complete Steps 1-6
+2. Upload to NotebookLM
+3. Run Step 11 (PG Prep) for proof-of-concept planning
 
-After generating initial documents:
-- Expand specific sections (e.g., "Expand the compliance section for Goal 3")
-- Add detail to metrics (e.g., "Add more specific KPI targets for Marketing")
-- Create visual artifacts (e.g., "Create a visual diagram showing relationships")
-- Convert formats (e.g., "Convert this into a presentation with one goal per slide")
-- Add implementation guidance (e.g., "Create an implementation roadmap")
-- Include case studies (e.g., "Add case studies for each major initiative")
+## Working with Prompt Templates
 
-## Repository Structure
-
-This is a **prompt template repository**, not a traditional code repository. It contains:
-- **Prompt Templates** (.md files): Copy-paste templates for AI assistants
-- **Documentation**: README.md and this CLAUDE.md file
-- **No Build System**: No compilation, testing, or deployment required
-- **Usage Pattern**: Copy prompt content → Customize placeholders → Submit to AI assistant
-
-### File Organization:
-```
-/
-├── customer-general.md          # Customer intelligence research prompt
-├── customer-wiz-aligned.md      # Customer-specific Wiz alignment prompt
-├── vertical-general.md          # Industry/vertical analysis prompt
-├── vertical-wiz-aligned.md      # Vertical-specific Wiz alignment prompt
-├── persona-exec-meeting-prep.md # Executive meeting preparation prompt
-├── README.md                    # Repository documentation
-├── CLAUDE.md                    # This file - guidance for Claude Code
-├── LICENSE                      # MIT License
-└── CODEOWNERS                   # Repository maintainer (@jacarty)
-```
-
-### Working with Prompt Templates:
-1. Read the relevant .md file to understand its purpose and structure
-2. Copy the prompt content (usually marked with "PROMPT TO USE" or similar heading)
-3. Replace placeholders (e.g., [COMPANY NAME], [EXECUTIVE NAME]) with actual values
-4. Submit to Claude Code or another AI assistant with web search capabilities
+### Usage Pattern
+1. Read the `_guide_` file to understand the prompt's purpose and usage
+2. Copy content from the corresponding `_prompt_` file
+3. Replace placeholders with actual values:
+   - `[COMPANY NAME]` - Prospect company name
+   - `[INDUSTRY]` - Industry/vertical
+   - `[SEGMENT]` - Market segment or company size
+   - `[EXECUTIVE NAME]` - Executive name for persona research
+4. Submit to the appropriate AI tool (Gemini/Merlin/NotebookLM)
 5. Iterate with follow-up requests as needed
 
-## Modifying Prompt Templates
+### Character Limits
+- **Merlin Input**: Must be under 10,000 characters (enforced in Step 5 synthesis)
+- **NotebookLM**: No strict limit, but works best with focused documents
 
-When updating prompt templates in this repository:
+## Modifying Workflow
 
-### Maintain Structure:
-- Keep the hierarchical document structure consistent across all strategy maps
-- Preserve placeholder format: `[PLACEHOLDER IN BRACKETS]` or `**[BOLD PLACEHOLDER]**`
-- Maintain section headers and subsection organization
-- Keep source citation requirements explicit
+When updating prompt templates:
 
-### Test Changes:
-1. After modifying a prompt, test it with a real example
-2. Verify all placeholders are clearly marked
-3. Ensure output quality matches expectations
-4. Check that sourcing requirements are maintained
+### Maintain Workflow Integrity
+- Preserve the numbered sequence (1-13)
+- Keep `_guide_` and `_prompt_` file pairs synchronized
+- Update [0_flow.mermaid](0_flow.mermaid) if adding/removing steps
+- Ensure Step 5 synthesis respects 10,000 character limit for Merlin
 
-### Documentation:
-- Update README.md when adding new prompt types
-- Update this CLAUDE.md when changing workflows or usage patterns
-- Include usage examples in the prompt template itself
+### Placeholder Format
+- Use `[PLACEHOLDER IN BRACKETS]` or `**[BOLD PLACEHOLDER]**`
+- Keep placeholders consistent across related prompts
+- Document required vs. optional placeholders in guide files
+
+### Test Changes
+1. Run the modified prompt with a real example
+2. Verify compatibility with downstream steps
+3. Check that outputs feed cleanly into NotebookLM
+4. Validate character limits for Merlin-bound content
+
+## Repository Type
+
+This is a **prompt template repository**, not a traditional code repository:
+- No build system, compilation, or testing framework
+- No package managers or dependencies
+- Version control is for prompt evolution tracking
+- Files are markdown documents, not executable code
+
+## Current Repository State
+
+Based on git status, several older files were deleted and new numbered workflow files (1-13) were added. The repository is in transition from the old naming scheme to the new numbered workflow system.
