@@ -1,4 +1,4 @@
-# Base Data - User Guide
+# Base Data - User Guide 
 ## What to Add to NotebookLM
 
 The more relevant prospect information added to NotebookLM, the better the AI-powered outputs will be. Think of this as the foundation that all subsequent research and prep work builds upon.

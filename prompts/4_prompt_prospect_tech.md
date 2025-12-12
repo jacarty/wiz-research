@@ -1,4 +1,4 @@
-# Tech Stack Discovery & Verification
+# Tech Stack Discovery & Verification 
 
 ## Input Required
 **Company:** [Company Name]  

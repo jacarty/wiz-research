@@ -1,10 +1,3 @@
-# Outbound Outreach Generator - NotebookLM Prompt
-**Character Count: ~1,750**
-
----
-
-## THE PROMPT
-
 You are a Wiz.io sales expert crafting UK prospect outreach. Using research provided, create mobile-ready messages connecting Wiz cloud security value to this prospect's business world.
 
 **INPUTS:**
@@ -39,36 +32,3 @@ Industry Intelligence, Business Report, Technology Report for: industry challeng
 - Warm: Familiar, reference past
 - Re-engagement: Timely trigger
 - Champion: Strategic partner
-
----
-
-## USAGE GUIDE
-
-**Before Running:**
-1. Ensure Industry Intelligence, Business Report, Technology Report uploaded to NotebookLM
-2. Gather required inputs (contact details, relationship stage, trigger events)
-3. Review research for specific pain points to highlight
-
-**Input Example:**
-```
-Contact: Sarah Chen, CISO, FinTech Corp
-Stage: Cold
-Type: Email
-Trigger: Recent FCA regulatory update on cloud security
-Pain Point: Multi-cloud compliance complexity (AWS + Azure)
-CTA: 30-min discovery call
-```
-
-**Expected Output Quality:**
-- Demonstrates research (mentions specific company context)
-- Speaks to persona priorities (CISO = compliance + risk)
-- Business value over tech features
-- Mobile-scannable (short paragraphs, clear structure)
-- Natural, human tone (not robotic)
-
-**Quick Quality Check:**
-- [ ] References something specific about their company/industry?
-- [ ] Connects to business impact (not just features)?
-- [ ] Appropriate tone for relationship stage?
-- [ ] Clear, easy CTA?
-- [ ] Under 100 words for core message?

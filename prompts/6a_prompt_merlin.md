@@ -1,4 +1,4 @@
-# Wiz GTM Use-Case Alignment
+# Wiz GTM Use-Case Alignment 
 
 Analyze the Prospect Intelligence Report below. Generate ranked Wiz use-case recommendations that map directly to the prospect's business priorities, strategic initiatives, and verified technology environment.
 

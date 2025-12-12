@@ -1,4 +1,4 @@
-# Industry Strategy Map Generator Prompt v2.0
+# Industry Strategy Map Generator Prompt
 ## Executive Intelligence Brief
 
 Create an executive-level Industry Strategy Map for the [INDUSTRY] industry and `[SEGMENT]`.

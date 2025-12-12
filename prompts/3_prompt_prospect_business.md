@@ -1,5 +1,5 @@
 # UK Customer Business Intelligence Research
-## RESEARCH SCOPE
+## RESEARCH SCOPE 
 
 **Company:** [Company Name]  
 **Industry/Sector:** [If known, otherwise identify through research]  
@@ -451,7 +451,3 @@ After completing research, provide this summary:
 - **Source:** https://fca.org.uk/firms/operational-resilience + FCA Register (Firm Reference Number: 730427)
 - **Date:** March 2022 (operational resilience rules), verified October 2025
 - **Why it matters:** Operational resilience requirements drive need for continuous monitoring and testing of critical services. Cloud security failures could impact important business services. FCA expects firms to know their third-party risk exposure.
-
----
-
-**End of Research Prompt**

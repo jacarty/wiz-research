@@ -1,6 +1,6 @@
 Prompt: Generate 3Y Challenge Framework
 Analyze all sources to create a 3-column summary for the "Securing Prospects Growth" slide framework:
-Structure:
+Structure.
 
 Column 1 (Y1): Business theme/goal
 Each column: 3 challenge boxes with headers + 2-3 bullet points per box
