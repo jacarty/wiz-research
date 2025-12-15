@@ -49,6 +49,11 @@ Per key participant:
 - Key stakeholders missing
 - Competitive landscape unclear
 
+### 9. COMPARISON TO PREVIOUS INTERACTIONS (if available)
+- Changes in sentiment or engagement vs prior calls
+- New stakeholders or topics introduced
+- Progression signals (moving forward/sideways/backward)
+
 ## Standards
 - Quote directly with timestamps when possible
 - Mark "Inferred" vs stated facts

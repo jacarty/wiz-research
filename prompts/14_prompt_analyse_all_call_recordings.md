@@ -48,6 +48,11 @@ Per key attendee:
 - Timeline/budget/process concerns
 - Competitive threats
 
+### 9. DEAL PROGRESSION TIMELINE
+- Key milestones achieved across meetings
+- Momentum indicators (accelerating/stalling/at risk)
+- Estimated days to close based on engagement pattern
+
 ## Standards
 - Source claims with timestamps/quotes where possible
 - Flag assumptions explicitly when confidence is low
